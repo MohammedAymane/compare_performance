@@ -1,0 +1,62 @@
+version: "3.9"
+services:
+  restmovie:
+    image: mohammedaymane/restmovie:latest
+    ports:
+      - "3200:3200"
+    networks:
+      - net
+
+  graphqlmovie:
+    image: mohammedaymane/graphqlmovie:latest
+    ports:
+      - "3001:3001"
+    networks:
+      - net
+  grpcmovie:
+    image: mohammedaymane/grpcmovie:latest
+    ports:
+      - "3002:3002"
+    networks:
+      - net
+
+
+  tester:
+    image: mohammedaymane/tester:latest
+    networks:
+      - net
+    depends_on:
+      - "restmovie"
+      - "graphqlmovie"
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  # showtime:
+  #   build: ./showtime/
+  #   ports:
+  #     - "3002:3002"
+  # booking:
+  #   build: ./booking/
+  #   ports:
+  #     - "3003:3003"
+  # user:
+  #   build: ./user/
+  #   ports:
+  #       - "3004:3004"
+networks:
+  net:

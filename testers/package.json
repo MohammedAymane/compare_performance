@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@grpc/grpc-js": "^1.7.1",
+    "@grpc/proto-loader": "^0.7.3",
+    "axios": "^1.1.2",
+    "graphql-request": "^5.0.0",
+    "grpc": "^1.24.11",
+    "grpc-promise": "^1.4.0"
+  }
+}
