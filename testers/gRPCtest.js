@@ -18,21 +18,10 @@ const client = new MovieService(
   grpc.credentials.createInsecure()
 );
 
-// client.GetListMovies("Empty", (err, data) => {
-//   if (!err) console.log(err);
-//   console.log(data);
-// });
-
 grpc_promise.promisifyAll(client);
-// client.GetListMovies({}, (err, data) => {
-//   if (!err) console.log(err);
-//   console.log(data);
-// });
 
-// define an async function
 async function testGrpcAPI(requestsNumber) {
   try {
-    // get data from jsonplaceholder API
     var requests = [];
     for (let index = 0; index < requestsNumber; index++) {
       requests.push(client.GetListMovies().sendMessage({}));
@@ -50,20 +39,4 @@ async function testGrpcAPI(requestsNumber) {
     console.error(error.message);
   }
 }
-
-// return await client.GetListMovies().sendMessage({});
-testGrpcAPI(10);
-
-// const start = new Date();
-// var call = client.GetListMovies({});
-//   call.on('data', function(feature) {
-//       console.log('Found feature called ' + feature.title);});
-//   call.on('end', function(data) {
-//     console.log((new Date() - start)/1000);
-//   });
-//   call.on('error', function(e) {
-//     // An error has occurred and the stream has been closed.
-//   });
-//   call.on('status', function(status) {
-//     // process status
-//   });
+export default testGrpcAPI;
