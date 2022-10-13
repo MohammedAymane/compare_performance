@@ -36,4 +36,4 @@ async function testTheGraphQLAPI(requestsNumber) {
   }
 }
 
-export default testTheGraphQLAPI;
+module.exports = testTheGraphQLAPI;

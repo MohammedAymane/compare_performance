@@ -14,7 +14,7 @@ var packageDefinition = protoLoader.loadSync(PROTO_PATH, {
 const MovieService = grpc.loadPackageDefinition(packageDefinition).Movie;
 
 const client = new MovieService(
-  "localhost:3002",
+  "grpcmovie:3002",
   grpc.credentials.createInsecure()
 );
 
@@ -39,4 +39,4 @@ async function testGrpcAPI(requestsNumber) {
     console.error(error.message);
   }
 }
-export default testGrpcAPI;
+module.exports = testGrpcAPI;

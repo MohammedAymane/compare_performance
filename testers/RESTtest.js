@@ -18,9 +18,4 @@ async function testTheRestAPI(requestsNumber) {
     console.error(error.message);
   }
 }
-
-for (let index = 0; index < 10; index++) {
-  testTheRestAPI(10);
-}
-
-export default testTheRestAPI;
+module.exports = testTheRestAPI;
