@@ -9,16 +9,12 @@ async function testTheGraphQLAPI(requestsNumber) {
           url: "http://graphqlmovie:3001/graphql",
           method: "post",
           data: {
-            query: `
-                  query {
-                    all_movies {
+            query: `query {all_movies {
                         id
                         title
                         rating
                         director
-                        }
-                    }
-                    `,
+                        }}`,
           },
         })
       );
@@ -36,4 +32,32 @@ async function testTheGraphQLAPI(requestsNumber) {
   }
 }
 
-module.exports = testTheGraphQLAPI;
+async function testTheGraphQLAPI2(requestsNumber) {
+  let requests = [];
+  try {
+    for (let index = 0; index < requestsNumber; index++) {
+      requests.push(
+        axios({
+          url: "http://graphqlmovie:3001/graphql",
+          method: "post",
+          data: { query: `query {all_movies {title}}` },
+        })
+      );
+    }
+    var start = new Date();
+    await Promise.all(
+      requests.map(async (data, j) => {
+        let d = await data;
+      })
+    );
+    var end = new Date();
+    console.log("GraphQL Requests took:", (end - start) / 1000, "seconds");
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+module.exports = {
+  testTheGraphQLAPI: testTheGraphQLAPI,
+  testTheGraphQLAPI2: testTheGraphQLAPI2,
+};
