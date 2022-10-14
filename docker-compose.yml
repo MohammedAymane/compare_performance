@@ -6,7 +6,6 @@ services:
       - "3200:3200"
     networks:
       - net
-
   graphqlmovie:
     image: mohammedaymane/graphqlmovie:latest
     ports:
@@ -20,7 +19,6 @@ services:
     networks:
       - net
 
-
   tester:
     image: mohammedaymane/tester:latest
     networks:
@@ -28,35 +26,6 @@ services:
     depends_on:
       - "restmovie"
       - "graphqlmovie"
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  # showtime:
-  #   build: ./showtime/
-  #   ports:
-  #     - "3002:3002"
-  # booking:
-  #   build: ./booking/
-  #   ports:
-  #     - "3003:3003"
-  # user:
-  #   build: ./user/
-  #   ports:
-  #       - "3004:3004"
+      - "grpcmovie"
 networks:
   net:
